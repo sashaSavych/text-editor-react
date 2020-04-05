@@ -2,27 +2,23 @@ import React, {Component} from 'react';
 import './App.scss';
 import ControlPanel from "./control-panel/ControlPanel";
 import FileZone from "./file-zone/FileZone";
-import getMockText from './text.service';
+import Footer from "./footer/Footer";
 
-class App extends Component {
-    getText() {
-        getMockText().then(function (result) {
-            console.log(result);
-        });
-    }
+export default class App extends Component {
     render() {
         return (
             <div className="App">
                 <header>
-                    <span>Simple Text Editor</span>
+                    <span>Text Editor</span>
                 </header>
                 <main>
                     <ControlPanel/>
                     <FileZone/>
                 </main>
+                <footer>
+                    <Footer/>
+                </footer>
             </div>
         );
     }
 }
-
-export default App;

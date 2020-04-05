@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './FileZone.scss';
 
-class FileZone extends Component {
+export default class FileZone extends Component {
     render() {
         return (
             <div id="file-zone">
@@ -12,5 +12,3 @@ class FileZone extends Component {
         );
     }
 }
-
-export default FileZone;

@@ -1,19 +1,17 @@
 html {
   height: 100%;
-}
 
-body {
-  margin: 0;
-  height: 100%;
-}
+  body {
+    margin: 0;
+    height: 100%;
 
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: right;
-}
+    button {
+      border-radius: 0;
+    }
 
-#root {
-  height: 100%;
+    #root {
+      font-family: 'Georgia', serif;
+      height: 100%;
+    }
+  }
 }

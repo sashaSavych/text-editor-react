@@ -1,0 +1,21 @@
+@import "../../variables";
+
+.format-action {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+  outline: none;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &.applied {
+    background-color: #ffa500;
+  }
+
+  &.not-applied {
+    background-color: $background-color-light;
+  }
+}
