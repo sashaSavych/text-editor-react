@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './FileZone.css';
+import './FileZone.scss';
 
 class FileZone extends Component {
     render() {

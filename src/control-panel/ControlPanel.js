@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './ControlPanel.css';
+import './ControlPanel.scss';
 
 class ControlPanel extends Component {
     render() {

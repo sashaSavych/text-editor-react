@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import './App.scss';
 import ControlPanel from "./control-panel/ControlPanel";
 import FileZone from "./file-zone/FileZone";
 import getMockText from './text.service';
