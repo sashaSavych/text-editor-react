@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Suggestions.scss';
-import {fetchSynonyms, suggestions$} from "../api.service";
+import {fetchSynonyms, suggestions$} from "../services/api.service";
 
 export default class Suggestions extends Component {
     constructor(props) {

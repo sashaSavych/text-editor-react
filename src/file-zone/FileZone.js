@@ -1,21 +1,18 @@
 import React, {Component} from 'react';
 import './FileZone.scss';
 import {
-    content$,
     getSelectedString,
     getSelectedText,
-    isTextSelectedSource$,
-    replaceSelectedTextWithSuggestion
-} from '../text.service';
+    mockText,
+    replaceSelectedTextWithSuggestion,
+    setTextSelectedSource
+} from '../services/text.service';
 import Suggestions from "../suggestions/Suggestions";
 
 export default class FileZone extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            content: props.content,
-            currentWord: ''
-        };
+        this.state = { currentWord: '' };
 
         this.onTextSelectionChange = this.onTextSelectionChange.bind(this);
         this.onSuggestionSelect = this.onSuggestionSelect.bind(this);
@@ -24,7 +21,7 @@ export default class FileZone extends Component {
     onTextSelectionChange() {
         const selectedText = getSelectedText();
 
-        isTextSelectedSource$.next(Boolean(Math.abs(selectedText.anchorOffset - selectedText.focusOffset)));
+        setTextSelectedSource(Boolean(Math.abs(selectedText.anchorOffset - selectedText.focusOffset)));
         this.setState({ currentWord: getSelectedString() });
     }
 
@@ -40,7 +37,7 @@ export default class FileZone extends Component {
                 <div
                     id="file"
                     contentEditable="true"
-                    dangerouslySetInnerHTML={{ __html: this.state.content }}
+                    dangerouslySetInnerHTML={{ __html: mockText }}
                     onSelect={this.onTextSelectionChange}>
                 </div>
                 <Suggestions
@@ -48,10 +45,6 @@ export default class FileZone extends Component {
                     onSuggestionSelect={this.onSuggestionSelect}/>
             </div>
         );
-    }
-
-    componentDidMount() {
-        content$.subscribe(content => this.setState({ content }));
     }
 }
 FileZone.defaultProps = { content: '' };

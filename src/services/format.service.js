@@ -1,7 +1,9 @@
-import {getSelectedText} from "./text.service";
+import {getSelectedText, toggleSelectionFormat} from "./text.service";
 
 // region Public
 export const saveFormatState = (format) => {
+    toggleSelectionFormat(format);
+
     if (isFormatApplied(format)) {
         removeFormat(format);
     } else {

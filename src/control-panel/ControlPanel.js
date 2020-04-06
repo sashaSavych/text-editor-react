@@ -2,21 +2,15 @@ import React, {Component} from 'react';
 import './ControlPanel.scss';
 import FormatButton from "./format-button/FormatButton";
 import {initialFormatButtons} from "./ControlPanelConfig";
-import {isTextSelected$} from "../text.service";
-import {getFormatsForFocusNode, saveFormatState} from "../format.service";
+import {isTextSelected$} from "../services/text.service";
+import {getFormatsForFocusNode, saveFormatState} from "../services/format.service";
 
 export default class ControlPanel extends Component {
     constructor(props) {
         super(props);
         this.state = { buttonsConfig: initialFormatButtons };
 
-        this.onToggleFormat = this.onToggleFormat.bind(this);
         this.toggleButtonStates = this.toggleButtonStates.bind(this);
-    }
-
-    onToggleFormat(format) {
-        document.execCommand(format);
-        saveFormatState(format);
     }
 
     toggleButtonStates(isTextSelected) {
@@ -44,7 +38,7 @@ export default class ControlPanel extends Component {
                                 markup={item.markup}
                                 disabled={item.disabled}
                                 applied={item.applied}
-                                onToggleFormat={this.onToggleFormat}/>
+                                onToggleFormat={saveFormatState}/>
                         })
                     }
                     </div>
@@ -54,7 +48,6 @@ export default class ControlPanel extends Component {
     }
 
     componentDidMount() {
-        isTextSelected$
-            .subscribe(isTextSelected => this.toggleButtonStates(isTextSelected));
+        isTextSelected$.subscribe(isTextSelected => this.toggleButtonStates(isTextSelected));
     }
 }
