@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Suggestions.scss';
 import {fetchSynonyms, suggestions$} from "../services/api.service";
+import Destroyer from "../shared/Destroyer";
 
-export default class Suggestions extends Component {
+export default class Suggestions extends Destroyer {
     constructor(props) {
         super(props);
         this.state = { suggestions: null };
@@ -21,7 +22,7 @@ export default class Suggestions extends Component {
     }
 
     componentDidMount() {
-        suggestions$.subscribe(suggestions => this.setState({ suggestions }));
+        this.subscription = suggestions$.subscribe(suggestions => this.setState({ suggestions }));
     }
 
     getSuggestionsContent(suggestions) {

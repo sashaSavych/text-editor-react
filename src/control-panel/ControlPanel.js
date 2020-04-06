@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './ControlPanel.scss';
 import FormatButton from "./format-button/FormatButton";
 import {initialFormatButtons} from "./ControlPanelConfig";
 import {isTextSelected$} from "../services/text.service";
 import {getFormatsForFocusNode, saveFormatState} from "../services/format.service";
+import Destroyer from "../shared/Destroyer";
 
-export default class ControlPanel extends Component {
+export default class ControlPanel extends Destroyer {
     constructor(props) {
         super(props);
         this.state = { buttonsConfig: initialFormatButtons };
@@ -48,6 +49,6 @@ export default class ControlPanel extends Component {
     }
 
     componentDidMount() {
-        isTextSelected$.subscribe(isTextSelected => this.toggleButtonStates(isTextSelected));
+        this.subscription = isTextSelected$.subscribe(isTextSelected => this.toggleButtonStates(isTextSelected));
     }
 }
