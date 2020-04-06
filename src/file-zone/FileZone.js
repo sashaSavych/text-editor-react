@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import './FileZone.scss';
-import {content$, getSelectedString, getSelectedText, isTextSelectedSource$} from '../text.service';
+import {
+    content$,
+    getSelectedString,
+    getSelectedText,
+    isTextSelectedSource$,
+    replaceSelectedTextWithSuggestion
+} from '../text.service';
 import Suggestions from "../suggestions/Suggestions";
 
 export default class FileZone extends Component {
@@ -12,6 +18,7 @@ export default class FileZone extends Component {
         };
 
         this.onTextSelectionChange = this.onTextSelectionChange.bind(this);
+        this.onSuggestionSelect = this.onSuggestionSelect.bind(this);
     }
 
     onTextSelectionChange() {
@@ -19,6 +26,12 @@ export default class FileZone extends Component {
 
         isTextSelectedSource$.next(Boolean(Math.abs(selectedText.anchorOffset - selectedText.focusOffset)));
         this.setState({ currentWord: getSelectedString() });
+    }
+
+    onSuggestionSelect(selectEvent) {
+        const selectedSuggestion = selectEvent.target.innerHTML;
+        replaceSelectedTextWithSuggestion(selectedSuggestion);
+        this.setState({ currentWord: '' });
     }
 
     render() {
@@ -30,7 +43,9 @@ export default class FileZone extends Component {
                     dangerouslySetInnerHTML={{ __html: this.state.content }}
                     onSelect={this.onTextSelectionChange}>
                 </div>
-                <Suggestions currentWord={this.state.currentWord}/>
+                <Suggestions
+                    currentWord={this.state.currentWord}
+                    onSuggestionSelect={this.onSuggestionSelect}/>
             </div>
         );
     }

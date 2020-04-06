@@ -13,6 +13,7 @@
     padding: 3px;
     border-radius: 3px;
     border: 1px solid $pink-color-dark;
+    user-select: none;
 
     &:hover {
       background-color: $pink-color-light;

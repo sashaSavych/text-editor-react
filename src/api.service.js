@@ -7,6 +7,7 @@ export const suggestions$ = suggestionsSource.asObservable();
 
 export const fetchSynonyms = (currentWord) => {
     if (!currentWord) {
+        suggestionsSource.next(null)
         return;
     }
 

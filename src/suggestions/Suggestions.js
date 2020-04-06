@@ -35,7 +35,11 @@ export default class Suggestions extends Component {
         }
 
         return suggestions.map(suggestion => {
-            return <span key={suggestion}>{suggestion}</span>
+            return <span
+                key={suggestion}
+                onClick={this.props.onSuggestionSelect}>
+                {suggestion}
+            </span>
         })
     }
 }
