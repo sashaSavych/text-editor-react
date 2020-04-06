@@ -49,9 +49,6 @@ export default class ControlPanel extends Component {
                     }
                     </div>
                 </div>
-                <div className="control-group">
-                    <div>Synonyms</div>
-                </div>
             </div>
         );
     }

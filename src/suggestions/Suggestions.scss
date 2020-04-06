@@ -1,0 +1,22 @@
+@import "../variables";
+
+#suggestions {
+  p {
+    font-size: 14px;
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  span {
+    display: inline-block;
+    margin: 3px;
+    padding: 3px;
+    border-radius: 3px;
+    border: 1px solid $pink-color-dark;
+
+    &:hover {
+      background-color: $pink-color-light;
+      cursor: pointer;
+    }
+  }
+}

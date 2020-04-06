@@ -1,20 +1,30 @@
 @import "../variables";
 
 #file-zone {
+    $section-gap: 5px;
+
     background-color: $gray-color-dark;
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    padding: 5px 0;
+    padding: $section-gap 0;
 
-    #file {
+    #file, #suggestions {
         width: 600px;
-        height: 100%;
         background-color: $gray-color-light;
         border: 1px solid $pink-color-dark;
         outline: none;
         padding: 30px;
         box-sizing: border-box;
+    }
+
+    #file {
+        height: 60%;
+    }
+
+    #suggestions {
+        height: calc(40% - #{$section-gap});
     }
 }

@@ -6,7 +6,19 @@ export const content$ = contentSource$.asObservable();
 
 export const isTextSelectedSource$ = new BehaviorSubject(false);
 export const isTextSelected$ = isTextSelectedSource$.asObservable();
+export const isOneWordSelected$ = isTextSelectedSource$.asObservable();
 
 export const getSelectedText = () => {
     return window.getSelection();
+};
+
+export const getSelectedString = () => {
+    const selectedText = getSelectedText();
+
+    if (selectedText.rangeCount === 0) {
+        return '';
+    }
+
+    const range = selectedText.getRangeAt(0);
+    return range.toString();
 };

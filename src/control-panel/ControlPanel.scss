@@ -10,16 +10,6 @@
         display: flex;
         justify-content: space-between;
 
-        &:last-of-type {
-            width: 150px;
-            background-color: $pink-color-light;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-transform: uppercase;
-        }
-
         #format-actions {
             display: flex;
         }
