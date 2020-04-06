@@ -1,43 +1,29 @@
-import React, { Component } from "react/cjs/react.production.min";
+import React, {Component} from "react/cjs/react.production.min";
 import './FormatButton.scss';
-import { capitalize } from '../../App.utils';
+import {capitalize} from '../../App.utils';
 
 export default class FormatButton extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            applied: this.props.applied
-        };
-
-        this.applyFormat = this.applyFormat.bind(this);
-        this.setButtonClass = this.setButtonClass.bind(this);
+        this.toggleFormat = this.toggleFormat.bind(this);
     }
 
-    componentWillMount() {
-        this.setButtonClass();
-    }
-
-    applyFormat(){
-        // eslint-disable-next-line
-        this.state.applied = !this.state.applied;
-        this.setButtonClass();
-        this.props.onApply(this.props.name);
-    }
-
-    setButtonClass() {
-        this.setState({ buttonClass: this.state.applied ? 'applied': 'not-applied' });
+    toggleFormat(){
+        this.props.onToggleFormat(this.props.name);
     }
 
     render() {
+        const { disabled, applied } = this.props;
+
         return (
             <button
-                className={`format-action ${this.state.buttonClass}`}
+                className={`format-action ${applied ? 'applied' : ''}`}
                 type="button"
                 title={capitalize(this.props.name)}
                 dangerouslySetInnerHTML={{ __html: this.props.markup }}
-                disabled={this.props.disabled}
-                onClick={this.applyFormat}>
+                disabled={disabled}
+                onClick={this.toggleFormat}>
             </button>
         );
     }

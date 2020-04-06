@@ -7,15 +7,19 @@
   margin-right: 5px;
   outline: none;
 
+  &:last-of-type {
+    margin-right: 0;
+  }
+
   &:disabled {
     cursor: not-allowed;
   }
 
-  &.applied {
-    background-color: #ffa500;
+  &:hover {
+    background-color: $pink-color-light;
   }
 
-  &.not-applied {
-    background-color: $background-color-light;
+  &.applied {
+    background-color: $gray-color-dark;
   }
 }

@@ -1,13 +1,27 @@
 @import "../variables";
 
 #control-panel {
-    background-color: $background-color-dark;
+    background-color: $pink-color-dark;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 3px;
+    justify-content: space-between;
+    padding: 3px calc((100% - 600px) / 2);
 
-    #format-actions {
+    .control-group {
         display: flex;
+        justify-content: space-between;
+
+        &:last-of-type {
+            width: 150px;
+            background-color: $pink-color-light;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        #format-actions {
+            display: flex;
+        }
     }
 }
