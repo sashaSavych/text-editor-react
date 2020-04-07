@@ -21,7 +21,7 @@ The application renders text and has several features for text manipulation and 
 ## `Demo`
 ![](demo.gif)
 
-#`Technical details`
+# `Technical details`
 This project was based on predefined skeleton: https://bitbucket.org/agileengine/ae-frontend-texteditor-reactjs-skeleton/src/master/
 
 ## `Setup`
